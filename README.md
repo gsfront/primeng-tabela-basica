@@ -17,7 +17,7 @@ O exemplo que será utilizado está na documentação do PrimeNG https://primefa
 - Instalar o primeng:<br> `npm install primeng --save` <br> `npm install primeicons --save`
 - Depois inserir os estilos css: <br>
 ```
-"src/styles.scss",              
+"src/styles.css",              
 "./node_modules/primeflex/primeflex.css",
 "./node_modules/primeng/resources/themes/md-light-indigo/theme.css",
 "./node_modules/primeng/resources/primeng.min.css",
