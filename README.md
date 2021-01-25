@@ -1,4 +1,4 @@
-# PrimeNG
+# PrimeNG + Angular 11
 Dicas rápidas a respeito do PrimeNG
 
 # Tabela Básica
