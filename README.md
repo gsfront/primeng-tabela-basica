@@ -15,9 +15,17 @@ O exemplo que será utilizado está na documentação do PrimeNG https://primefa
 #### <i>Primeiro passo:</i>
 
 - Instalar o primeng:<br> `npm install primeng --save` <br> `npm install primeicons --save`
+- Depois inserir os estilos css: <br>
+```
+"src/styles.scss",              
+"./node_modules/primeflex/primeflex.css",
+"./node_modules/primeng/resources/themes/md-light-indigo/theme.css",
+"./node_modules/primeng/resources/primeng.min.css",
+"./node_modules/primeicons/primeicons.css"
+```
 - Vamos importar o módulo `TableModule` ```import {TableModule} from 'primeng/table'; ``` em `ÀppModule`
-- Criar o componente para trabalharmos com o modelo `ng g c produto`
-- Agora vamos inserir o modelo estático de exemplo no HTML `produto.component.html`
+- Iremos trabalhar nos componentes `app.component.html` e `app.component.ts`
+- Agora vamos inserir o modelo estático de exemplo no HTML `app.component.html`
 
 ```
 <p-table [value]="produtos">
@@ -42,25 +50,25 @@ O exemplo que será utilizado está na documentação do PrimeNG https://primefa
 </p-table>
 ```
 <b>Obs:</b> `let-produto` é uma variável e deve ser declarada, pois é ela quem irá consuduzir os dados para exibir como pode observar no código acima, segue um exemplo: `produto.codigo`, `produto.nome`...<br>
-- No `produto.component.ts` iremos inserir o seguinte:
-- Importar `import { ProductService } from './produto-service';`
-- Importar `import { Produto } from './produto';` será aonde irá conter a Interface
+- No `app.component.ts` iremos inserir o seguinte:
+- Importar `import { ProdutoService } from './produto.service';`
+- Importar `import { Produtos } from './produto';` será aonde irá conter a Interface
 
 - Inserir o seguinte código:
 ```
 produtos: Produtos[];
 
-constructor(private productService: ProductService) { }
+constructor(private produtoService: ProdutoService) { }
 
 ngOnInit() {
-    this.produtoService.getProduto()
+    this.produtoService.getProdutos()
     .then(produto => {
         this.produtos = produto
     });
 }
 ```
 #### <i>Segundo passo:</i>
-Criar nosso arquivo JSON `produto.json` e Inserir estes dados:<br>
+Criar nosso arquivo JSON em `assets\produto.json` e Inserir estes dados:<br>
 ```
 {
     "data": [
@@ -71,22 +79,23 @@ Criar nosso arquivo JSON `produto.json` e Inserir estes dados:<br>
     ]
 }
 ```
-Também iremos criar o serviço utilizando o terminal dentro da pasta do seu projeto `ng g s producto-service`<br>
+Também iremos criar o serviço utilizando o terminal dentro da pasta do seu projeto `ng g s produto`<br>
+- Deverá importar o `HttpClient` em `ÀppModule` `import { HttpClientModule } from '@angular/common/http';`<br>
 Seu serviço estará gerado com o modelo padrão do Angular, porém deverá deixar desta forma:
 ```
 constructor(private http: HttpClient) {}
 
-getBooks() {
+getProdutos() {
     return this.http.get<any>('assets/produto.json')
       .toPromise()
-      .then(res => <Produto[]>res.data)
+      .then(res => <Produtos[]>res.data)
       .then(produto => { return produto; });
 }
 ```
 #### <i>Terceiro passo</i>
 - Criar a Interface do modelo `produto.ts` e inserir o seguinte código:
 ```
-export interface Produto {
+export interface Produtos {
     id?: string;
     nome?: string;
     preco?: number;
