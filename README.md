@@ -14,7 +14,7 @@ O exemplo que será utilizado está na documentação do PrimeNG https://primefa
 
 #### <i>Primeiro passo:</i>
 
-- Instalar o primeng:<br> `npm install primeng --save` <br> `npm install primeicons --save`
+- Instalar o primeng:<br> `npm install primeng --save` <br> `npm install primeicons --save` <br> `npm install primeflex --save` <br> `npm install @angular/cdk --save`
 - Depois inserir os estilos css: <br>
 ```
 "src/styles.css",              
@@ -38,7 +38,7 @@ O exemplo que será utilizado está na documentação do PrimeNG https://primefa
             <th>Quantidade</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-produto> //Ler descrição depois do código
+    <ng-template pTemplate="body" let-produto> <!-- Ler descrição depois do código -->
         <tr>
             <td>{{produto.codigo}}</td>
             <td>{{produto.nome}}</td>
