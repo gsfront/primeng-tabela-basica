@@ -14,6 +14,7 @@ O exemplo que será utilizado está na documentação do PrimeNG https://primefa
 
 #### <i>Primeiro passo:</i>
 
+- Instalar o primeng:<br> `npm install primeng --save` <br> `npm install primeicons --save`
 - Vamos importar o módulo `TableModule` ```import {TableModule} from 'primeng/table'; ``` em `ÀppModule`
 - Criar o componente para trabalharmos com o modelo `ng g c produto`
 - Agora vamos inserir o modelo estático de exemplo no HTML `produto.component.html`
