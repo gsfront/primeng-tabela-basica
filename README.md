@@ -1,27 +1,110 @@
-# Primeng
+# PrimeNG + Angular 11
+Dicas rápidas a respeito do PrimeNG
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.7.
+# Tabela Básica
 
-## Development server
+## Primeiro iremos exibir uma Tabela utilizando recurso local no formato JSON
+O exemplo que será utilizado está na documentação do PrimeNG https://primefaces.org/primeng/showcase/#/table/basic
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Resumo do que iremos precisar
+1. Importar o módulo ```import {TableModule} from 'primeng/table'; ``` em `AppModule`;
+2. Criar o Serviço utilizando o terminal `ng g s producto-service`;
+3. Criar a Interface de dados `produto`;
+4. Rodar o projeto.
 
-## Code scaffolding
+#### <i>Primeiro passo:</i>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Instalar o primeng:<br> `npm install primeng --save` <br> `npm install primeicons --save` <br> `npm install primeflex --save` <br> `npm install @angular/cdk --save`
+- Depois inserir os estilos css: <br>
+```
+"src/styles.css",              
+"./node_modules/primeflex/primeflex.css",
+"./node_modules/primeng/resources/themes/md-light-indigo/theme.css",
+"./node_modules/primeng/resources/primeng.min.css",
+"./node_modules/primeicons/primeicons.css"
+```
+- Vamos importar o módulo `TableModule` ```import {TableModule} from 'primeng/table'; ``` em `ÀppModule`
+- Iremos trabalhar nos componentes `app.component.html` e `app.component.ts`
+- Agora vamos inserir o modelo estático de exemplo no HTML `app.component.html`
 
-## Build
+```
+<p-table [value]="produtos">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Codigo</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Valor $</th>
+            <th>Quantidade</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-produto> <!-- Ler descrição depois do código -->
+        <tr>
+            <td>{{produto.codigo}}</td>
+            <td>{{produto.nome}}</td>
+            <td>{{produto.categoria}}</td>
+            <th>{{produto.preco}}</th>
+            <td>{{produto.quantidade}}</td>
+        </tr>
+    </ng-template>
+</p-table>
+```
+<b>Obs:</b> `let-produto` é uma variável e deve ser declarada, pois é ela quem irá consuduzir os dados para exibir como pode observar no código acima, segue um exemplo: `produto.codigo`, `produto.nome`...<br>
+- No `app.component.ts` iremos inserir o seguinte:
+- Importar `import { ProdutoService } from './produto.service';`
+- Importar `import { Produtos } from './produto';` será aonde irá conter a Interface
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Inserir o seguinte código:
+```
+produtos: Produtos[];
 
-## Running unit tests
+constructor(private produtoService: ProdutoService) { }
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ngOnInit() {
+    this.produtoService.getProdutos()
+    .then(produto => {
+        this.produtos = produto
+    });
+}
+```
+#### <i>Segundo passo:</i>
+Criar nosso arquivo JSON em `assets\produto.json` e Inserir estes dados:<br>
+```
+{
+    "data": [
+        {"codigo": "001", "nome": "Mizuno Wave", "preco": 250, "categoria": "Tênis", "quantidade": 24},
+        {"codigo": "002", "nome": "Nike Revolution 5", "preco": 300, "categoria": "Tênis", "quantidade": 15},
+        {"codigo": "003", "nome": "Adidas Terex", "preco": 350, "categoria": "Tênis", "quantidade": 17},
+        {"codigo": "004", "nome": "Puma Wired", "preco": 190, "categoria": "Tênis", "quantidade": 10}
+    ]
+}
+```
+Também iremos criar o serviço utilizando o terminal dentro da pasta do seu projeto `ng g s produto`<br>
+- Deverá importar o `HttpClient` em `ÀppModule` `import { HttpClientModule } from '@angular/common/http';`<br>
+Seu serviço estará gerado com o modelo padrão do Angular, porém deverá deixar desta forma:
+```
+constructor(private http: HttpClient) {}
 
-## Running end-to-end tests
+getProdutos() {
+    return this.http.get<any>('assets/produto.json')
+      .toPromise()
+      .then(res => <Produtos[]>res.data)
+      .then(produto => { return produto; });
+}
+```
+#### <i>Terceiro passo</i>
+- Criar a Interface do modelo `produto.ts` e inserir o seguinte código:
+```
+export interface Produtos {
+    codigo?: string;
+    nome?: string;
+    preco?: number;
+    quantidade?: number;
+    categoria?: string;
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+- Agora é só rodar o projeto com `ng serve --o`
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Se preferir poderá baixar o código completo neste repositório ou através do link: [GitHub](https://github.com/devmovel/primeng/archive/main.zip)<br>
+Então entrar na pasta do projeto via terminal e executar o comando `npm install`, em seguida `ng serve`

@@ -1,0 +1,8 @@
+{
+    "data": [
+        {"codigo": "001", "nome": "Mizuno Wave", "preco": 250, "categoria": "Tênis", "quantidade": 24},
+        {"codigo": "002", "nome": "Nike Revolution 5", "preco": 300, "categoria": "Tênis", "quantidade": 15},
+        {"codigo": "003", "nome": "Adidas Terex", "preco": 350, "categoria": "Tênis", "quantidade": 17},
+        {"codigo": "004", "nome": "Puma Wired", "preco": 190, "categoria": "Tênis", "quantidade": 10}
+    ]
+}
