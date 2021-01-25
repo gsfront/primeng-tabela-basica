@@ -72,10 +72,10 @@ Criar nosso arquivo JSON em `assets\produto.json` e Inserir estes dados:<br>
 ```
 {
     "data": [
-        {"id": "001", "nome": "Mizuno Wave", "preco": 250, "categoria": "Tênis", "quantidade": 24},
-        {"id": "002", "nome": "Nike Revolution 5", "preco": 300, "categoria": "Tênis", "quantidade": 15},
-        {"id": "003", "nome": "Adidas Terex", "preco": 350, "categoria": "Tênis", "quantidade": 17},
-        {"id": "004", "nome": "Puma Wired", "preco": 190, "categoria": "Tênis", "quantidade": 10}
+        {"codigo": "001", "nome": "Mizuno Wave", "preco": 250, "categoria": "Tênis", "quantidade": 24},
+        {"codigo": "002", "nome": "Nike Revolution 5", "preco": 300, "categoria": "Tênis", "quantidade": 15},
+        {"codigo": "003", "nome": "Adidas Terex", "preco": 350, "categoria": "Tênis", "quantidade": 17},
+        {"codigo": "004", "nome": "Puma Wired", "preco": 190, "categoria": "Tênis", "quantidade": 10}
     ]
 }
 ```
@@ -96,7 +96,7 @@ getProdutos() {
 - Criar a Interface do modelo `produto.ts` e inserir o seguinte código:
 ```
 export interface Produtos {
-    id?: string;
+    codigo?: string;
     nome?: string;
     preco?: number;
     quantidade?: number;
@@ -106,4 +106,5 @@ export interface Produtos {
 
 - Agora é só rodar o projeto com `ng serve --o`
 
-Se preferir poderá baixar o código completo neste repositório ou através do link: [GitHub](https://github.com/devmovel/primeng/archive/main.zip)
+Se preferir poderá baixar o código completo neste repositório ou através do link: [GitHub](https://github.com/devmovel/primeng/archive/main.zip)<br>
+Então entrar na pasta do projeto via terminal e executar o comando `npm install`, em seguida `ng serve`
