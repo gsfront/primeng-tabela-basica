@@ -15,7 +15,8 @@ O exemplo que será utilizado está na documentação do PrimeNG https://primefa
 #### <i>Primeiro passo:</i>
 
 - Instalar o primeng:<br> `npm install primeng --save` <br> `npm install primeicons --save` <br> `npm install primeflex --save` <br> `npm install @angular/cdk --save`
-- Depois inserir os estilos css em `angular.json: <br>
+
+- Depois inserir os estilos css em `angular.json`:
 ```
 "src/styles.css",              
 "./node_modules/primeflex/primeflex.css",
