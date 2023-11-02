@@ -1,4 +1,4 @@
-# PrimeNG + Angular 11
+# PrimeNG + Angular 16
 Dicas rápidas a respeito do PrimeNG
 
 # Tabela Básica
@@ -11,6 +11,9 @@ O exemplo que será utilizado está na documentação do PrimeNG https://primefa
 2. Criar o Serviço utilizando o terminal `ng g s producto-service`;
 3. Criar a Interface de dados `produto`;
 4. Rodar o projeto.
+
+### Resultado esperado
+![resultado](https://github.com/gsfront/primeng-tabela-basica/assets/18249944/d890d8e6-2e63-4839-ac02-8398dee3111a)
 
 #### <i>Primeiro passo:</i>
 
@@ -106,6 +109,8 @@ export interface Produtos {
 ```
 
 - Agora é só rodar o projeto com `ng serve --o`
+
+
 
 Se preferir poderá baixar o código completo neste repositório ou através do link: [GitHub](https://github.com/devmovel/primeng/archive/main.zip)<br>
 Então entrar na pasta do projeto via terminal e executar o comando `npm install`, em seguida `ng serve`
